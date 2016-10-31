@@ -1,0 +1,23 @@
+.hidden{
+    display:none
+}
+
+/*these classes are for animation*/
+.carousel-enter {
+    opacity: 0.01;
+}
+
+.carousel-enter.carousel-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.carousel-leave {
+    visibility:hidden;
+    opacity: 1;
+}
+
+.carousel-leave.carousel-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
