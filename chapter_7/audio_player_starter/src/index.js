@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import {BrowserRouter as Router} from 'react-router-dom';
 import App from './App';
-import SongsList from './components/SongsList';
-import SongDetails from './components/SongDetails';
 import './index.css';
 
 function Song(source, title, description, id) {
@@ -20,11 +18,7 @@ const songs = [
 ]
 
 ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route songs={songs} path="/" component={App}>
-      <IndexRoute component={SongsList} />
-      <Route path="songs" component={SongsList} />
-      <Route path="songs/:id" component={SongDetails} />
-    </Route>
+  <Router>
+    <App songs={songs} />
   </Router>
 ),document.getElementById('root'));
