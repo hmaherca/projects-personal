@@ -1,0 +1,196 @@
+body, html{
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.navBar{
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.App h1{
+  font-size: 3em;
+}
+
+.base{
+  position: absolute;
+  height: 100px;
+  width: 500px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+}
+
+button {
+  color: #fff;
+  font-size: 2em;
+  background-color: black;
+  text-shadow: 2px 2px dimgrey;
+  padding:10px;
+  border: none;
+}
+
+.post{
+  position: absolute;
+  height: 400px;
+  width: 10px;
+  bottom: 100px;
+  left: 195px;
+  background-color: black;
+}
+
+.bar{
+  position: absolute;
+  height: 10px;
+  width: 200px;
+  bottom: 500px;
+  left: 195px;
+  background-color: black;
+}
+
+.rope{
+  position: absolute;
+  height: 50px;
+  width: 10px;
+  bottom: 450px;
+  left: 385px;
+  background-color: black;
+}
+
+.head{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  bottom: 380px;
+  left: 353px;
+  border-radius: 100px;
+  border: 7px solid black;
+}
+
+.body{
+  position: absolute;
+  width: 7px;
+  height: 120px;
+  bottom: 260px;
+  left: 387px;
+  background-color: black;
+}
+
+.leftArm{
+  transform: rotate(45deg);
+  position: absolute;
+  height: 60px;
+  width: 7px;
+  bottom: 300px;
+  left: 365px;
+  background-color: black;
+}
+
+.rightArm{
+  transform: rotate(-45deg);
+  position: absolute;
+  height: 60px;
+  width: 7px;
+  bottom: 300px;
+  left: 409px;
+  background-color: black;
+}
+
+.leftLeg{
+  transform: rotate(45deg);
+  position: absolute;
+  height: 60px;
+  width: 7px;
+  bottom: 210px;
+  left: 365px;
+  background-color: black;
+}
+
+.rightLeg{
+  transform: rotate(-45deg);
+  position: absolute;
+  height: 60px;
+  width: 7px;
+  bottom: 210px;
+  left: 409px;
+  background-color: black;
+}
+
+.guess{
+  font-size: 2em;
+}
+
+.gameContainer{
+  position: absolute;
+  left: 50%;
+  top: 20%;
+}
+
+li{
+  list-style: none;
+}
+
+.tumbleweed{
+  position: absolute;
+  bottom: 45px;
+  left: 0px;
+  z-index:-1;
+  width: 70px;
+  height: 70px;
+  background: url('https://st3.depositphotos.com/3557671/12796/v/950/depositphotos_127963366-stock-illustration-tumbleweed-icon-in-black-style.jpg') no-repeat;
+  background-size: 100%;
+}
+
+.tumbleweed{
+  animation: tumbleweed linear 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes tumbleweed{
+  0% {
+    transform:  translate(0px,45px)  rotate(0deg) ;
+  }
+  9% {
+    transform:  translate(10vw,5px)  rotate(130deg) ;
+  }
+  17% {
+    transform:  translate(15vw,45px)  rotate(250deg) ;
+  }
+  26% {
+    transform:  translate(25vw,15px)  rotate(360deg) ;
+  }
+  34% {
+    transform:  translate(36vw,45px)  rotate(490deg) ;
+  }
+  42% {
+    transform:  translate(40vw,30px)  rotate(600deg) ;
+  }
+  50% {
+    transform:  translate(48vw,45px)  rotate(720deg) ;
+  }
+  59% {
+    transform:  translate(56vw,30px)  rotate(840deg) ;
+  }
+  68% {
+    transform:  translate(65vw,15px)  rotate(960deg) ;
+  }
+  76% {
+    transform:  translate(78vw,30px)  rotate(1080deg) ;
+  }
+  85%{
+    transform:  translate(90vw,45px)  rotate(1200deg) ;
+  }
+  92% {
+    transform:  translate(99vw,30px)  rotate(1320deg) ;
+  }
+  100% {
+    transform:  translate(110vw,15px)  rotate(1480deg) ;
+  }
+}
