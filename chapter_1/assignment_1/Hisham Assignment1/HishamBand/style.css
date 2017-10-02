@@ -86,7 +86,7 @@ form{
 @media (max-width:222px) {
     .btn{
         padding: 2px 4px;
-        font-size: 9px;
+        font-size: 0.4em;
         line-height: 2;
         width: 100%;
     }
