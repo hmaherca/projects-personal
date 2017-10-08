@@ -16,14 +16,30 @@ let words = [
 
 let answer; 
 let nWrong; 
-let pastGuesses = [];
-let pastGames = [];
+let pastGuesses = ['l',];
+let pastGames = [{nWrong},{pastGuesses}];
 let cont = true;
+let correctGuesses = []
+
+function Game(nWrong,pastGuesses){
+    this.pastGuesses = pastGuesses
+    this.nWrong = nWrong
+}
+
+
+
 
 /*
 PART 1
 
 Write the pseudocode that represents your game logic here.
+# evalute the letter the player entered
+# store that letter in pastGuesses array
+# if that letter has already been guessed, dont store it and inform player
+# we need to add to the the nWrong counter to keep track of how many guesses the player has left
+# make a loop for answer array and compare each guess with each index of that array
+# if the guess does not match any of the indexes increment the counter by 1 
+# if all the correct letters have been guessed before the guess limit has been reached display 'you win'
 
 */
 
@@ -39,9 +55,51 @@ function startGame() {
 			Write the logic that will check whether or not the guess the user entered
 			was valid here.
 
+
 		*/
-	}
-	printGameState();
+
+		if(pastGuesses.length===0){
+			pastGuesses.push(guess)
+		}
+		if(guess.length != 1 || !isNaN(guess)){
+			console.log('please enter a valid single character')
+		}
+		console.log(guess);
+		console.log(pastGuesses.length);
+		console.log('your past guesses', pastGuesses);
+		var alreadyGuessed = false
+		console.log('WORKING UP TO HERE')
+		for(let i = 0; i < pastGuesses.length; i++){
+			if (pastGuesses[i] === guess){
+				alreadyGuessed = true
+				console.log('already guessed')
+			}
+			else if(i===pastGuesses.length-1 && !alreadyGuessed){
+				console.log('we are pushing')
+				pastGuesses.push(guess)
+			}
+
+			}
+			guessMatch=false
+			for (let i = 0; i < answer.length; i++){
+				if (guess === answer[i]){
+						guessMatch =  true
+					}
+					else if(i == answer.length-1 && !guessMatch){
+						nWrong = nWrong +1
+					}
+				
+			}
+			
+		}
+	
+			
+		
+			
+
+
+
+	//printGameState();
 
 	/*
 		PART 3	
@@ -49,16 +107,59 @@ function startGame() {
 		Log whether or not the game was won or lost here!
 
 	*/
+	
+		
 }
 
 function checkGameOver(){
 	// WRITE CODE FOR PART 3 BELOW
-	return false; 
+	// var answerArray = [];
+	// for (var i = 0; i < answer.length; i++) {
+	// answerArray[i] = "_";
+	// }
+
+	// for (var i = 0; i <	answer.length; i++)
+	// if(answer[i] === guess){
+		
+	
+	// }
+	if(nWrong >= 6){
+		console.log ('sorry you lost');
+		return true
+		let pastGameRecord = new Game(nWrong, pastGuesses);
+
+	}
+	
+	let letterMatch=0
+	for(let i=0; i<answer.length; i++){
+		for(let j=0; j<pastGuesses.length; j++){
+			if(answer[i] === pastGuesses[j]){
+				letterMatch++
+			}
+			
+		}
+		
+	}
+	if(letterMatch===answer.length){
+		console.log('you win');
+		return true
+
+		let pastGameRecord = new Game(nWrong, pastGuesses)
+
+	}
+	
+	
+
+
+	
+	
+		
 }
+
 
 function printGameState(){
 	//Add a console.log here to print the previous guesses.
-
+	// console.log(alreadyGuessed)
 	console.log('\n');
 	let str = "";
 	
