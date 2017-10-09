@@ -22,8 +22,8 @@ let cont = true;
 let correctGuesses = []
 
 function Game(nWrong,pastGuesses){
-    this.pastGuesses = pastGuesses
-    this.nWrong = nWrong
+    this.pastGuesses = pastGuesses;
+    this.nWrong = nWrong;
 }
 
 
@@ -39,7 +39,12 @@ Write the pseudocode that represents your game logic here.
 # we need to add to the the nWrong counter to keep track of how many guesses the player has left
 # make a loop for answer array and compare each guess with each index of that array
 # if the guess does not match any of the indexes increment the counter by 1 
-# if all the correct letters have been guessed before the guess limit has been reached display 'you win'
+# make an if statement that ends the game if the nWrong counter reaches 6 or greater
+# make another array with a counter to keep track of correct guesses
+# make a for loop that goes through the the answer array and another for loop within it going through pastGuesses
+# compare each letter from the answer array through the entire pastGuesses array anytime there is a match increase the correct match counter by 1
+# once the loop is done, check if the correct match counter has the same value as the total number of indexes in the answer array.
+# if the counter and answer array match the player win and end the game.
 
 */
 
