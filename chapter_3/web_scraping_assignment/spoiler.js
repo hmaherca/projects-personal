@@ -6,7 +6,9 @@ const cheerio = require ('cheerio'),
 let movie = [];
 let seconds = [];
 let API = ['46b2502c5bbf9676b203d2ec4c8066e2'];
-
+//whatever is not a number push it into the movie array
+// whatever is a number push it into the seconds array
+// this will define the movie title and the number of seconds for the spoiler
 for (i=2; i < process.argv.length; i++){
     if(isNaN(process.argv[i])){
         movie.push(process.argv[i]);
@@ -30,24 +32,17 @@ request('https://api.themoviedb.org/3/search/movie?api_key='+API+'&query=' + mov
     }
 
     else if(!error){
-         // Print the HTML for the Google homepage.
-    // scraping step 2 get the data you want
+    //parse the body of the results so we can access it as an object
+    // load the body that is an object now
     let tmdb= JSON.parse(body);
-    //console.log(tmdb.results[0].overview);
     const $ = cheerio.load(body);
-    //console.log('SPOILER ' + tmdb.results[0].overview);
+    //timer to display spoiler
     setTimeout(function(){
         console.log('SPOILER ' + tmdb.results[0].overview)
     }, seconds*1000);
     }
  });
 
-
-
-// timer to display spoiler
-//setTimeout(function(){
- //   console.log('SPOILER ' + tmdb.results[0].overview)
-//}, seconds*1000);
 
 // google results of movie name
 
@@ -67,23 +62,3 @@ if (!error){
 })
 
 
-/*request('https://api.themoviedb.org/3/search/movie?api_key=46b2502c5bbf9676b203d2ec4c8066e2&query=' + movie, +"film", function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-     // Print the HTML for the Google homepage.
-    // scraping step 2 get the data you want
-    let tmdb= JSON.parse(body);
-    console.log(tmdb.results[0].overview);
-    const $ = cheerio.load(body);
-    console.log(`SPOILER  + ${tmdb.results[0].overview}`);
- });
-
-
-
-
-/*console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML for the Google homepage.
-    // scraping step 2 get the data you want
-    console.log(body);
-});*/
