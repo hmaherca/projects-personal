@@ -8,27 +8,41 @@ let seconds = [];
 let API = ['46b2502c5bbf9676b203d2ec4c8066e2'];
 //whatever is not a number push it into the movie array
 // whatever is a number push it into the seconds array
-// this will define the movie title and the number of seconds for the spoiler
 for (i=2; i < process.argv.length; i++){
     if(isNaN(process.argv[i])){
         movie.push(process.argv[i]);
 
     }
+    //EDGE CASE
     else if(!isNaN(process.argv[i])){
         parseInt(process.argv[i]);
         seconds.push(process.argv[i]);
+        if(seconds.length>=2){
+            movie.push(seconds[0])
+        }
 
     }
+    
 }
 
-console.log("**SPOILER WARNING** about to spoil " + movie + " in " + seconds + " seconds");
+// console.log the spiler warning to the use
+// edge cases here include a movie with a number in it e.g spiderman 2
+if(seconds.length>=2){
+    console.log("**SPOILER WARNING** about to spoil " + movie + " in " + seconds[1] + " seconds");
+}
+else if(seconds.length<2){
+    console.log("**SPOILER WARNING** about to spoil " + movie + " in " + seconds[0] + " seconds");
+}
+
+
 
 //TMDB SPOILER FOR MOVIE
 
 request('https://api.themoviedb.org/3/search/movie?api_key='+API+'&query=' + movie, +"film", function (error, response, body) {
-    if(error){
+    if(error || process.argv.length<=2){
         console.log('error:', error); // Print the error if one occurred
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        console.log('PLEASE ENTER A MOVIE TITLE FOLLOWED BY THE NUMBER OF SECONDS UNTIL YOU RECIEVE YOUR SPOILER')//EDGE CASE IN CASE NOTHING WAS TYPED INTO THE PROGRAM
     }
 
     else if(!error){
@@ -37,9 +51,16 @@ request('https://api.themoviedb.org/3/search/movie?api_key='+API+'&query=' + mov
     let tmdb= JSON.parse(body);
     const $ = cheerio.load(body);
     //timer to display spoiler
-    setTimeout(function(){
-        console.log('SPOILER ' + tmdb.results[0].overview)
-    }, seconds*1000);
+    if(seconds.length>=2){
+        setTimeout(function(){
+            console.log('SPOILER ' + tmdb.results[0].overview)
+        }, seconds[1]*1000);
+    }
+    else if (seconds.length<2){
+        setTimeout(function(){
+            console.log('SPOILER ' + tmdb.results[0].overview)
+        }, seconds[0]*1000);
+    }
     }
  });
 
