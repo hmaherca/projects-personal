@@ -1,6 +1,10 @@
 // initialize Express in project
 const express = require('express');
 const app = express();
+const movieInfo = getmovies();
+const dataObject = {
+  movieData: movieInfo
+}
 
 app.set('view engine', 'ejs');
 
@@ -8,13 +12,57 @@ app.get('/', (req, res) => {
     /* EDIT CODE HERE ----------------------------------
     render pages/index with data of movies
     -------------------------------------------------- */
+    res.render('pages/index', dataObject);
 })
 
 app.get('/movie/:movieId', (req, res) => {
     /* EDIT CODE HERE ----------------------------------
     render pages/movie with data of specfic movie
     -------------------------------------------------- */
+    const movieId = (req.params.movieId);
+
+    let singleMovie;
+    for (let i =0; i <dataObject.movieData.length; i++){
+        if(movieId===dataObject.movieData[i].id){
+            singleMovie = { movie: dataObject.movieData[i]}
+        }
+    }
+
+    res.render('pages/movie', singleMovie);
+
+
+
+
+
+
+
+
 })
+
+app.get('/search', (req,res)=>{
+console.log(req.query.name_field);
+
+let movie_search = (req.query.name_field);
+//searchResult is an array
+//we will filter getmovies(), based if the title of the movie includes the anything the user searches
+//if it returns true that movie is pushed to the searchResult array
+//  searchResult=getmovies().filter(movie => dataObject.movieData.title.toLowerCase().includes(movie_search.toLowerCase()))
+
+
+
+let searchResult=[]
+for (let i =0; i <dataObject.movieData.length; i++){
+  if(dataObject.movieData[i].title.toLowerCase().includes(movie_search.toLowerCase())){
+      searchResult.push(dataObject.movieData[i]);
+      console.log(searchResult);
+  }
+}
+
+
+res.render('pages/search', {searchResult});
+
+
+});
 
 app.use(express.static('public'));
 

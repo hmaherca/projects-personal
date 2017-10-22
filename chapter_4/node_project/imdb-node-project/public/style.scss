@@ -1,0 +1,82 @@
+
+// here I define the base color and texts
+// I will attach the color to the index release date
+// as well as the font to all the text in the tables
+$release-color: #1d86da;
+$rating-color: red;
+$movie-text-style: courier;
+
+
+// here I attach the name  of the colors using explicit naming 
+// table, release-date and baddge will all have styless added to them
+.table {
+  font-family: $movie-text-style;
+}
+
+
+.released-date{
+  color: $release-color;
+}
+
+.badge{
+    color: $rating-color;
+}
+
+.movie-list-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .movie-list-item:hover {
+    background-color: #eee;
+  }
+  
+  .movie-list-item .poster-container {
+    height: 200px;
+    width: 150px;
+  }
+  
+  .movie-list-item .movie-poster {
+    max-height: 200px;
+    max-width: 150px;
+  }
+  
+  .released-date {
+    margin-top: 20px;
+  }
+  
+  
+  
+  #movie-details .movie-poster {
+    max-height: 350px;
+    max-width: 262px;
+  }
+  
+  #movie-details .buttons {
+    text-align: center;
+  }
+  
+  .movie-link {
+    color: inherit;
+  }
+  
+  .movie-link:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  // css for video-background
+
+//   #video-background {
+//     /*  making the video fullscreen  */
+//       position: fixed;
+//       right: 0; 
+//       bottom: 0;
+//       min-width: 100%; 
+//       min-height: 100%;
+//       width: auto; 
+//       height: auto;
+//       z-index: -100;
+//     }
+    
+    

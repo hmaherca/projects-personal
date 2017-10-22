@@ -8,29 +8,29 @@
     <body>
         <div class="container">
             <div id="movie-details">
-                <h1 class="text-center"><% /* text for movie title */ %></h1>
+                <h1 class="text-center"><%= movie.title %></h1>
                 <div class="row">
                     <div class="col-xs-5">
-                        <img class="movie-poster" src=<% /* text for movie poster */ %> />
+                        <img class="movie-poster" src=<%= movie.poster %> />
                     </div>
                     <div class="col-xs-7">
                         <table class="table">
                             <% /*  ----------------------------------------------
                             Repeat the following HTML structure for all key value pairs in movie object
-                            -------------------------------------------------- */ %>
+                            -------------------------------------------------- */for(let key in movie){ %>
                             <tr>
-                                <td><% /* name of key (e.g., title) */ %></td>
-                                <td><% /* value (e.g., The Matrix) */ %></td>
+                                <td><%= key %></td>
+                                <td><%= movie[key] %></td>
                             </tr>
                             <% /*  ----------------------------------------------
-                            -------------------------------------------------- */ %>
+                            -------------------------------------------------- */} %>
                         </table>
                     </div>    
                 </div>
 
                 <div class="row">
                     <div class=buttons>
-                        <a class="btn btn-primary" href=<% /* link to main page */ %>>Back</a>
+                        <a class="btn btn-primary" href=<%= '/'  %>>Back</a>
                     </div>
                 </div>
             </div>

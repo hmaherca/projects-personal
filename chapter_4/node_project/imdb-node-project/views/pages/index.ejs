@@ -6,37 +6,46 @@
     </head>
 
     <body>
+    
         <div class="container">
+        
+        
             <h1 class="text-center">Movie Database</h1>
+            
+            <form action="/search" method="get">
+            <label for="movie_name">Enter Movie Name: </label>
+            <input id="movie_name" type = "text" name="name_field" placeholder="Start Exploring.">
+            <input type="submit" value="search">
+            </form>
 
-            <% /*  ----------------------------------------------
-            Repeat the following HTML structure for all movies
-            -------------------------------------------------- */ %>
 
-            <a class="movie-link" href=<% /* link to individual movie URL */ %>>
+            
+
+            <% for(let i=0; i<movieData.length; i++ ){ %>
+
+            <a class="movie-link" href="<%= '/movie/'+movieData[i].id %>">
             <div class="media movie-list-item">
                 <div class="media-left">
                     <div class="poster-container">
-                        <img class="media-object movie-poster" src=<% /* link to individual movie poster */ %> />
+                        <img class="media-object movie-poster" src='<%= movieData[i].poster %>' />
                     </div>
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        <% /* text for individual movie title */ %>
-                        <span class="badge"><% /* text for individual movie rating */ %></span>
+                        <%= movieData[i].title %>
+                        <span class="badge"><%= movieData[i].rated %></span>
                     </h4>
                     <div>
-                        <% /* text for individual movie plot */ %>
+                        <%= movieData[i].plot %>
                     </div>
                     <div class="released-date">
-                        Released: <% /* text for individual movie release date */ %>
+                        Released: <%=  movieData[i].released %>
                     </div>
                 </div>
             </div>
             </a>
             
-            <% /*  ----------------------------------------------
-            -------------------------------------------------- */ %>
+            <% } %>
 
         </div>
     </body>

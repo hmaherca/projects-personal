@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="https:maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/styles.css">        
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="text-center">Movie Database</h1>
+            <form action="search" method="get">
+            <label for="movie_name">Enter Movie Name: </label>
+            <input id="movie_name" type = "text" name="name_field" placeholder="Start Exploring.">
+            <input type="submit" value="search">
+            </form>
+
+            <h1><%= searchResult.title %></h1>
+            
+            <% for(let i=0; i<searchResult.length; i++ ){ %>
+
+            <a class="movie-link" href="<%= '/movie/'+searchResult[i].id %>">
+             <div class="media movie-list-item">
+                 <div class="media-left">
+                     <div class="poster-container">
+                         <img class="media-object movie-poster" src='<%= searchResult[i].poster %>' />
+                     </div>
+                 </div>
+                 <div class="media-body">
+                     <h4 class="media-heading">
+                         <%= searchResult[i].title %>
+                         <span class="badge"><%= searchResult[i].rated %></span>
+                     </h4>
+                     <div>
+                         <%= searchResult[i].plot %>
+                     </div>
+                     <div class="released-date">
+                         Released: <%=  searchResult[i].released %>
+                     </div>
+                 </div>
+             </div>
+             </a>
+            
+             <% } %>
+
+        </div>
+    </body>
+</html>
+
