@@ -7,7 +7,7 @@
 
     <body>
         <div class="container">
-            <h1 class="text-center">Movie Database</h1>
+            <h1 class="text-center green-bold">Movie Database</h1>
             <form action="search" method="get">
             <label for="movie_name">Enter Movie Name: </label>
             <input id="movie_name" type = "text" name="name_field" placeholder="Start Exploring.">
@@ -26,7 +26,7 @@
                      </div>
                  </div>
                  <div class="media-body">
-                     <h4 class="media-heading">
+                     <h4 class="media-heading green-bold">
                          <%= searchResult[i].title %>
                          <span class="badge"><%= searchResult[i].rated %></span>
                      </h4>
@@ -41,6 +41,10 @@
              </a>
             
              <% } %>
+             <div class="row">
+                    <div class=buttons>
+                        <a class="btn btn-primary" href=<%= '/'  %>>Back</a>
+                    </div>
 
         </div>
     </body>

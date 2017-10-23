@@ -1,3 +1,8 @@
+.green-bold {
+  font-family: courier;
+  font-weight: bold;
+  color: lightseagreen; }
+
 .table {
   font-family: courier; }
 

@@ -7,8 +7,14 @@
 
     <body>
         <div class="container">
+        <form action="/search" method="get">
+            <label for="movie_name">Enter Movie Name: </label>
+            <input id="movie_name" type = "text" name="name_field" placeholder="Start Exploring.">
+            <input type="submit" value="search">
+            </form>
+        
             <div id="movie-details">
-                <h1 class="text-center"><%= movie.title %></h1>
+                <h1 class="text-center green-bold"><%= movie.title %></h1>
                 <div class="row">
                     <div class="col-xs-5">
                         <img class="movie-poster" src=<%= movie.poster %> />

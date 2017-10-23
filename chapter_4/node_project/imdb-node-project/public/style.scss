@@ -9,6 +9,17 @@ $movie-text-style: courier;
 
 // here I attach the name  of the colors using explicit naming 
 // table, release-date and baddge will all have styless added to them
+
+@mixin text {
+    // write the css here
+    font-family: $movie-text-style;
+    font-weight: bold;
+    color: lightseagreen;
+}
+.green-bold{
+    @include text;
+}
+
 .table {
   font-family: $movie-text-style;
 }
