@@ -39,10 +39,7 @@ class App extends Component {
         return output;
     })
 
-    // console.log(copy);
-
-    // copy[index].done= !copy[index].done;
-
+    
     this.setState({
       todos: copy
     });
@@ -64,17 +61,17 @@ class App extends Component {
         todos: copy
       });
    
-      //this._inputElement.value = "";
+     
     }
    
     console.log(copy);
      
-   // e.preventDefault();
+ 
 
   }
 
   clearHandler(){
-    // let copy = Array.from(this.state.todos);
+    
     let clearList = 
     this.state.todos.filter((item)=> !item.done)
     
@@ -107,16 +104,7 @@ class App extends Component {
   
   
   render() {
-    
-    // const todos = [
-    //   {task:'Learn React'},
-    //   {task:'complete assignment'},
-    //   {task:'sleep'}
-    // ]
-    // let todoList=[]
-    // for(let i=0; i<todos.length; i++){
-    //   todoList.push(<ListItems task={todos[i].text}/>)
-    // }
+   
     let Todos = [];
     if(this.state.show==="all"){
       Todos=this.state.todos
@@ -150,4 +138,3 @@ class App extends Component {
 
 
 export default App;
-//<button disabled = {true or false}></button>
