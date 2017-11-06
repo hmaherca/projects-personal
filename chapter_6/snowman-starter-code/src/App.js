@@ -32,7 +32,8 @@ let currentKey=[]
 let wins;
 let losses;
 let str = ""
-let winText = ""  
+let winText = "" 
+ 
 
 
 class App extends Component {
@@ -100,6 +101,8 @@ class App extends Component {
       // alert('you lost')
       copyWinText = "you lost"
       document.removeEventListener("keypress", this.addGuessHandler)
+      let loss = new this.GameHistory('loss', nWrong, this.state.answer)
+      pastGames.push(loss)
 
     }
 
@@ -123,6 +126,8 @@ class App extends Component {
       // alert('YOU WON')
       copyWinText = "YOU WON!"
       document.removeEventListener("keypress", this.addGuessHandler)
+      let win = new this.GameHistory('win', nWrong, this.state.answer)
+      pastGames.push(win)
 
   
     }
@@ -160,6 +165,13 @@ class App extends Component {
       pastGuesses:[],
       winText: ""
     })
+  }
+
+  GameHistory(winState, nWrong, answer){
+    this.winState= winState
+    this.nWrong = nWrong
+    this.answer = answer
+
   }
 
 
@@ -234,7 +246,7 @@ class App extends Component {
             <Switch>
                 <Route path="/instructions" exact component={Instructions}/>
                 <Route path='/highscores' render={(props) => (
-                  <Highscores  wins={this.state.wins} losses={this.state.losses}/>
+                  <Highscores  wins={this.state.wins} losses={this.state.losses} pastGames={this.state.pastGames} nWrong={this.state.nWrong}/>
                 )}/>
                 <Route path='/' render={(props) => (
                   <Snowman  pastGuesses={this.state.pastGuesses} answer={this.state.answer} nWrong={this.state.nWrong} currentKey={this.state.currentKey} buildWordInProgress={guess} wins={this.state.wins} losses={this.state.losses} winText={this.state.winText} newGame={this.setUpNewGame}/>
