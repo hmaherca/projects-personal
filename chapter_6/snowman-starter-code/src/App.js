@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import './App.css';
 import Form from './Form'
 import Highscores from './Highscores'
+import Instructions from './Instructions'
 
 
 const words = [
@@ -14,7 +15,10 @@ const words = [
 	'youre',
 	'better',
 	'than',
-	'me'
+  'me',
+  'constantine',
+  'chelsea',
+  'poop'
 ];
 
 
@@ -28,6 +32,7 @@ let currentKey=[]
 let wins;
 let losses;
 let str = ""
+let winText = ""  
 
 
 class App extends Component {
@@ -43,6 +48,7 @@ class App extends Component {
       wins: wins,
       losses: losses,
       str:str,
+      winText:winText
       
 
     }
@@ -54,6 +60,8 @@ class App extends Component {
     let nWrongCopy = this.state.nWrong
     let winsCopy = this.state.wins
     let lossesCopy = this.state.losses
+    let copyWinText = this.state.winText
+    
 
     
     //EDGE CASESx
@@ -89,7 +97,10 @@ class App extends Component {
     }
     if(nWrongCopy===6){
       lossesCopy = lossesCopy + 1
-      alert('You Lost')
+      // alert('you lost')
+      copyWinText = "you lost"
+      document.removeEventListener("keypress", this.addGuessHandler)
+
     }
 
     //CORRECT ANSWER MATCHED 
@@ -109,7 +120,9 @@ class App extends Component {
     if(letterMatch>=(this.state.answer.length)){
       console.log('you win');
       winsCopy= winsCopy +1
-      alert('YOU WON')
+      // alert('YOU WON')
+      copyWinText = "YOU WON!"
+      document.removeEventListener("keypress", this.addGuessHandler)
 
   
     }
@@ -122,7 +135,8 @@ class App extends Component {
         nWrong:nWrongCopy,
         currentKey: event.key,
         losses: lossesCopy,
-        wins: winsCopy
+        wins: winsCopy,
+        winText: copyWinText
       
       });
       console.log(copy)
@@ -143,7 +157,8 @@ class App extends Component {
       wins: 0,
       losses:0,
       nWrong: 0,
-      pastGuesses:[]
+      pastGuesses:[],
+      winText: ""
     })
   }
 
@@ -171,11 +186,13 @@ class App extends Component {
 
   setUpNewGame=()=>{
     
-
+    document.addEventListener("keypress", this.addGuessHandler);
     this.setState({
       answer: this.getRandomWord().split(''),
       nWrong: 0,
-      pastGuesses:[]
+      pastGuesses:[],
+      winText: ""
+      
     })
   }
 
@@ -210,16 +227,17 @@ class App extends Component {
           <div>
             <nav>
               <Link to="/highscores">Highscores</Link>
+              <Link to="/instructions">Instructions</Link>
               <Link to="/">Snowman</Link>
             </nav>
-            <button onClick={this.setUpNewGame}>New game</button>
+            {/* <button onClick={this.setUpNewGame}>New game</button> */}
             <Switch>
-                {/* <Route path="/highscores" exact component={Highscores}/> */}
+                <Route path="/instructions" exact component={Instructions}/>
                 <Route path='/highscores' render={(props) => (
                   <Highscores  wins={this.state.wins} losses={this.state.losses}/>
                 )}/>
                 <Route path='/' render={(props) => (
-                  <Snowman  pastGuesses={this.state.pastGuesses} answer={this.state.answer} nWrong={this.state.nWrong} currentKey={this.state.currentKey} buildWordInProgress={guess} wins={this.state.wins} losses={this.state.losses}/>
+                  <Snowman  pastGuesses={this.state.pastGuesses} answer={this.state.answer} nWrong={this.state.nWrong} currentKey={this.state.currentKey} buildWordInProgress={guess} wins={this.state.wins} losses={this.state.losses} winText={this.state.winText} newGame={this.setUpNewGame}/>
                 )}/>
 
             </Switch>

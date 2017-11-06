@@ -38,13 +38,14 @@ class Snowman extends Component {
                     <div hidden={this.props.nWrong>5} className='rightArm'></div>
                 </div>
                 <div className='gameContainer'>
-                    <Form />
+                    
                     <h1>Currently Selected Guess is:{this.props.currentKey}</h1>
                     <h1>Your word is:{this.props.buildWordInProgress}</h1>
                     <h2>Your past guesses are:{this.props.pastGuesses}</h2>
                     <h2>the answer is: {this.props.answer}</h2>
                     <h2>Wins: {this.props.wins} Losses:{this.props.losses}</h2>
-              
+                    <h2 className="winTextColor">  {this.props.winText}</h2>
+                    <button onClick={this.props.newGame}>New Game</button>
                 </div>
             </div>
         )
