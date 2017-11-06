@@ -101,7 +101,7 @@ class App extends Component {
       // alert('you lost')
       copyWinText = "you lost"
       document.removeEventListener("keypress", this.addGuessHandler)
-      let loss = new this.GameHistory('loss', nWrong, this.state.answer)
+      let loss = new this.GameHistory('loss', nWrongCopy, this.state.answer)
       pastGames.push(loss)
 
     }
@@ -126,7 +126,7 @@ class App extends Component {
       // alert('YOU WON')
       copyWinText = "YOU WON!"
       document.removeEventListener("keypress", this.addGuessHandler)
-      let win = new this.GameHistory('win', nWrong, this.state.answer)
+      let win = new this.GameHistory('win', nWrongCopy, this.state.answer)
       pastGames.push(win)
 
   

@@ -10,7 +10,7 @@ class Highscores extends React.Component{
                 <div>
                    
                     <h2> Won Or lost?: {games.winState}</h2>
-                    <h2> Wrong Guesses: {this.props.nWrong}</h2>
+                    {/* <h2> Wrong Guesses: {this.props.nWrong}</h2> */}
                     <h2> Word Was: {games.answer}</h2>
                     <hr></hr>
                 </div>  
