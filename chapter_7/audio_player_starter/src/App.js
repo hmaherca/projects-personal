@@ -11,7 +11,8 @@ class App extends Component {
     super();
     this.state = {
       source:0,
-      isPlaying: false
+      isPlaying: false,
+      playOrPause:'play'
     }
    this.onclick = this.onclick.bind(this)
    this.onNext = this.onNext.bind(this)
@@ -21,17 +22,23 @@ class App extends Component {
 
   playaudio(){
     let song= document.getElementById('player')
+    let copyplayOrPause=this.state.playOrPause
     if(this.state.isPlaying){
       song.play()
+      copyplayOrPause='Pause'
     }
     else{
       song.pause()
+      copyplayOrPause='Play'
     }
+    this.setState({
+      playOrPause:copyplayOrPause
+    })
   }
   playfunct(){
     let copy = !this.state.isPlaying;
     this.setState({
-      isPlaying:copy
+      isPlaying:copy,
     })
   }
 
@@ -97,9 +104,11 @@ class App extends Component {
         <p>this is where the contorls would be</p>
         {/* <Player songs={this.props.songs} source={this.state.source} id = "player"/> */}
         <button onClick={()=>{this.onPrev()}} id="the prev button">Prev</button>
-        <button onClick={()=>{this.playfunct()}} id="the play button">Play</button>
+        <button onClick={()=>{this.playfunct()}} id="the play button" className="playButton">{this.state.playOrPause}</button>
         <button onClick={()=>{this.onNext()}} id="the next button">Next</button>
         <audio  src={this.props.songs[this.state.source].source} type="mp3" id="player"/>
+        <p>Current Track:{this.props.songs[this.state.source].title}</p>
+
       </div>
     );
   }

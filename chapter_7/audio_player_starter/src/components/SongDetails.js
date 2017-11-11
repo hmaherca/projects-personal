@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+// import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Player from './Player'
 
 class SongDetails extends Component {
