@@ -30,16 +30,16 @@ connection.on("open", () => {
 //Create a Todo
 
 // const french = new Todo({
-//     text:'Learn FRENCH',
-//     done:'false',
+//     text: 'Learn FRENCH',
+//     done: 'false',
 // })
-// .save()
-// .then(savedTodo =>{
-//     console.log(savedTodo)
-// })
-// .catch(error =>{
-//     console.log(error)
-// })
+//     .save()
+//     .then(savedTodo => {
+//         console.log(savedTodo)
+//     })
+//     .catch(error => {
+//         console.log(error)
+//     })
 
 
 
@@ -122,3 +122,32 @@ app.delete('/deletetodos', (req, res) => {
         })
 })
 
+app.get('/todos', (req, res) => {
+    Todo.find({
+        done: true
+    })
+        .then(todo => {
+            console.log(todo)
+            res.json(todo)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send('not found ')
+        })
+
+})
+
+app.get('/todos', (req, res) => {
+    Todo.find({
+        done: false
+    })
+        .then(todo => {
+            console.log(todo)
+            res.json(todo)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send('not found ')
+        })
+
+})

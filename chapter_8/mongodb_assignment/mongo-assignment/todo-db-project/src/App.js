@@ -203,7 +203,7 @@ class App extends Component {
       Todos = this.state.todos.filter((item) => item.done)
     }
 
-    let todoList = this.state.todos.map((individualTodo, index) => {
+    let todoList = Todos.map((individualTodo, index) => {
       return (
         <ListItems key={ individualTodo._id } index={ index } _id={ individualTodo._id } checkHandler={ this.checkHandler } text={ individualTodo.text } done={ individualTodo }
           individualTodo={ individualTodo } />
