@@ -27,7 +27,7 @@ connection.on("open", () => {
 })
 
 
-//Create a Todo
+//Create a Todo Hard Code
 
 // const french = new Todo({
 //     text: 'Learn FRENCH',
@@ -42,7 +42,7 @@ connection.on("open", () => {
 //     })
 
 
-
+//HANDLE A POST REQUEST TO MAKE A NEW TODO
 app.post('/todos', (req, res) => {
     console.log(req.body, "this is the post body")
     // CREATE A NEW DOCUMENT IN THE 'TODO' Collection
@@ -68,7 +68,7 @@ app.post('/todos', (req, res) => {
 
 
 
-
+//HANDLE A GET REQUEST TO SEND ALL THE TODOS CURRENTLY IN THE DB TO THE FRONT END
 app.get('/todos', (req, res) => {
     Todo.find({})
         .then(todo => {
@@ -83,6 +83,7 @@ app.get('/todos', (req, res) => {
 })
 
 //create a PUT route, for the path /updatetodo
+//HANDLE AN UPDATE TO A TODO E.G CHANGING DONE TO FALSE OR TRUE
 app.put('/updatetodo', (req, res) => {
     Todo.findByIdAndUpdate({
         _id: req.body.data._id
@@ -100,6 +101,7 @@ app.put('/updatetodo', (req, res) => {
 
 })
 
+//HANDLE A DELETE REQUEST TO REMOVE COMPLETED TODOS
 app.delete('/deletetodos', (req, res) => {
     Todo.remove({
         _id: {

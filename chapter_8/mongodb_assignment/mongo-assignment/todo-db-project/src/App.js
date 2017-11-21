@@ -32,7 +32,6 @@ class App extends Component {
 
   checkHandler(individualTodo, index) {
     console.log(individualTodo, "the indi todo")
-    // console.log(_id, 'ID from List.js');
     axios.put('http://localhost:8080/updatetodo', {
       data: individualTodo
     })
@@ -40,36 +39,10 @@ class App extends Component {
         console.log(res, "this is the result from the checkhandler")
         let copy = Array.from(this.state.todos)
         copy[index].done = res.data.done
-
-        // .map((element,index)=>{
-        //   let output=element._id
-        //   if(output===individualTodo){
-        //     output.done=!output.done
         this.setState({
           todos: copy
         })
-      //   }
-      //   console.log(output,"this is the output")
-      // })
-      // this.setState({
-      //   todos:res.data
-      // })
       })
-
-
-      // let copy = Array.from(this.state.todos).map((individualTodo,) => {
-      //     let output = individualTodo._id;
-      //     if(output === individualTodo._id){
-      //       // console.log(output,"output id here")
-      //       output.done = !output.done;
-      //     }
-      //     return output;
-      // })
-
-
-  // this.setState({
-  //   todos: copy
-  // });
   }
 
   addTodoHandler(text) {
@@ -79,55 +52,15 @@ class App extends Component {
       .then(result => {
         console.log(result)
         let copy = Array.from(this.state.todos);
-
-        // if (text !== "") {
         copy.unshift(result.data);
-        // }
-
         this.setState({
           todos: copy
         });
       })
-
       .catch(error => {
         console.log(error, "add todo error")
       })
-
-
-
-
-
-      // console.log(copy);
-
-
   }
-
-
-
-
-  // 
-  // addTodoHandler(text){
-  //   console.log('add Todo function works')
-  //   axios.post('http://localhost:8080/todos',{text:text})
-  //         .then(result=>{
-  //           console.log(text)
-
-  //             //take the new saved cat and put it in 
-  //             // the kittens state array
-  //             let newTodo =result.data;
-  //             let copy=Array.from(this.state.todos);
-  //             copy.push(newTodo)
-  //             this.setState({
-  //                 Todos:copy
-  //             })
-
-  //             console.log(copy);
-  //         })
-  //         .catch(error=>{
-  //           console.log(error, "add todo error")
-  //         })
-  //         console.log(text,'we reached the end')
-  // }
 
   clearHandler() {
     let copy = Array.from(this.state.todos);
@@ -144,15 +77,7 @@ class App extends Component {
       this.setState({
         todos: res.data
       })
-
     })
-    // let clearList = 
-    // this.state.todos.filter((item)=> !item.done)
-
-
-  // this.setState({
-  //   todos: clearList
-  // });
   }
 
   changeHandler(value) {
@@ -177,7 +102,6 @@ class App extends Component {
     axios.get('http://localhost:8080/todos')
       .then(result => {
         console.log(result.data)
-        // console.log(result.data);
         let allTodos = result.data
         console.log(allTodos, "ToDos from WillMount")
         this.setState({
