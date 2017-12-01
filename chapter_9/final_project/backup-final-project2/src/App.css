@@ -1,0 +1,95 @@
+.App {
+  text-align: center;
+  background-color:black; 
+}
+nav .nav-wrapper {
+  position: relative;
+  height: 100%;
+  background-color: #0505e2;
+}
+
+.imgTwitter{
+  height: 51px;
+  width: 80px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.emotions{
+  width: 10vw;
+}
+
+footer.page-footer {
+  padding-top: 20px;
+  background-color: #2e95e6;
+  width: 99vw;
+  background-image: url('/Images/footerImage.jpg');
+  min-height: 200px; 
+  
+      /* Create the parallax scrolling effect */
+      /* background-attachment: fixed; */
+      background-position: top;
+      /* background-repeat: no-repeat; */
+      background-size: cover;
+      margin-top: -10vh;
+      height: 37vh;
+  
+  
+}
+
+.ss_verticalScoreboard.ss_flat.ss_dark .ss_header {
+  border: 1px solid #666;
+  display: none;
+}
+
+.textCenter{
+  text-align: center
+}
+
+.scores {
+  position: relative;
+  top: -60px;
+  z-index: 0;
+}
+
+.navbar-hisham {
+  position: fixed;
+  z-index: 1;
+  font-family: 'Francois One', sans-serif;
+}
+
+.row .col.l6 {
+  width: 50%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+  margin-left: 32vw;
+}
+
+.col-sm-12, .col-md-6{
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  /* padding-right: 15px; */
+  /* padding-left: 15px; */
+}
+
+.card {
+  /* position: relative; */
+  margin: .5rem 0 1rem 0;
+  background-color: #FFFFFF;
+  transition: box-shadow .25s;
+  /* border: 5px solid #56cff7; */
+  border-radius: 2px;
+  margin-top: 63px;
+  -webkit-box-shadow: 3px 6px 5px 0px rgba(237,228,236,0.35);
+  -moz-box-shadow: 3px 6px 5px 0px rgba(237,228,236,0.35);
+  box-shadow: 3px 6px 5px 0px rgba(237,228,236,0.35);
+  font-family: 'Teko', sans-serif;
+}
+
+.card .card-title {
+  font-size: 24px;
+  font-weight: 300;
+  font-family: 'Teko', sans-serif;
+}
